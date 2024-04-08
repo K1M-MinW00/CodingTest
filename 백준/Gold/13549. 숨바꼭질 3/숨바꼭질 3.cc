@@ -1,20 +1,15 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-
 using namespace std;
 
-int answer = 100001;
-
-void bfs(int n, int k)
+int bfs(int n, int k)
 {
+    int answer = 100001;
 
-	if (n >= k)
-	{
-		answer = n - k;
-		return;
-	}
-
+    if (n >= k)
+	    return n - k;
+   
 	queue<int> q;
 	q.push(n);
 
@@ -25,15 +20,12 @@ void bfs(int n, int k)
 	{
 		int cur = q.front();
 		q.pop();
-
-		if (cur == k)
-		{
-			answer = min(answer, v[cur]);
-			return;
-		}
+        
+        if (cur == k)
+	        return v[cur];
 
 		for (int next : {cur + 1, cur - 1, cur*2})
-		{
+		{				
 			if (next < 0 || next > 100000)
 				continue;
 
@@ -69,9 +61,7 @@ int main()
 	int n, k;
 	cin >> n >> k;
 
-	bfs(n, k);
+	cout << bfs(n, k);
 	
-	cout << answer;
-
 	return 0;
 }
