@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <queue>
 
 using namespace std;
 
@@ -9,42 +8,32 @@ int main()
 	int n;
 	cin >> n;
 
-	vector<int> v(n + 1);
-	vector<bool> visited(n + 1, false);
+	vector<int> v(1001);
+	vector<int> dp(1001, 1000000);
 
 	for (int i = 1; i <= n; ++i)
 		cin >> v[i];
 
-	queue<pair<int, int>> q; // idx - cnt
+	dp[1] = 0;
 
-	q.push({ 1,0 });
-	visited[1] = true;
-
-	while (q.size())
+	if (n == 1)
 	{
-		int idx = q.front().first;
-		int cnt = q.front().second;
-		q.pop();
-
-		if (idx == n)
-		{
-			cout << cnt;
-			return 0;
-		}
-
-		for (int i = 1; i <= v[idx]; ++i)
-		{
-			int next = idx + i;
-
-			if (next <= n && visited[next] == false)
-			{
-				visited[next] = true;
-				q.push({ next,cnt + 1 });
-			}
-		}
+		cout << 0;
+		return 0;
 	}
 
-	cout << -1;
+	for (int i = 1; i < n; ++i)
+	{
+		for (int j = 1; j <= v[i]; ++j)
+			if (i + j <= 1000)
+				dp[i + j] = min(dp[i + j], dp[i] + 1);
+	}
+
+	if (dp[n] == 1000000)
+		cout << -1;
+
+	else
+		cout << dp[n];
 
 	return 0;
 }
