@@ -19,16 +19,15 @@ int main()
 		cin >> v[i];
 
 	sort(v.begin(), v.end());
-	v.push_back(0);
 
-	int cur = 0, next = 1, cnt = 0;
+	int cur = 0, next = 0, cnt = 0;
 
 	while (1)
 	{
 		if (v[next] - v[cur] <= l - 1)
 		{
 			next++;
-			if (v[next] == 0)
+			if (next == n)
 			{
 				cnt++;
 				break;
