@@ -8,22 +8,20 @@ using namespace std;
 unsigned long long bin(long long n)
 {
 	unsigned long long left = 0, right = n, mid;
-	unsigned long long answer = 0;
 
 	while (left <= right)
 	{
 		mid = (left + right) / 2;
 
-		if ((mid * (mid + 1)) <= 2*n)
+		if ((mid * (mid + 1)) <= 2 * n)
 		{
 			left = mid + 1;
-			answer = max(mid, answer);
 		}
 
 		else
 			right = mid - 1;
 	}
-	return answer;
+	return right;
 }
 
 int main()
