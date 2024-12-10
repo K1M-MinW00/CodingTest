@@ -9,48 +9,43 @@ int main()
 	string str;
 	cin >> str;
 
-	vector<int> alphabet(26, 0);
-	vector<int> odd;
+	int alpha[26] = { 0, };
 
 	for (int i = 0; i < str.length(); ++i)
 	{
-		alphabet[str[i] - 'A']++;
+		alpha[str[i] - 'A']++;
 	}
 
+	int odd = 0;
+	string t;
+	string answer;
 
-	string front, end, answer;
-
-	for (int i = 0; i < alphabet.size(); ++i)
+	for (int i = 0; i < 26; ++i)
 	{
-		if (alphabet[i] == 0)
-			continue;
+		char c = i + 'A';
 
-		for (int j = 1; j <= alphabet[i] / 2; ++j)
+		if (alpha[i] % 2 == 1)
 		{
-			char c = (i + 'A');
-			front += c;
+			if (t == "")
+				t = c;
+			else
+			{
+				cout << "I'm Sorry Hansoo";
+				return 0;
+			}
 		}
-		if (alphabet[i] % 2 == 1)
-			odd.push_back(i);
+
+		for (int j = 0; j < alpha[i] / 2; ++j)
+			answer += c;
 	}
 
-	end = front;
+	string temp = answer;
+	reverse(temp.begin(), temp.end());
 
-	//cout << front << ' ' << end;
-	if (odd.size() > 1)
-		answer = "I'm Sorry Hansoo";
+	if (t != "")
+		answer += t;
 
-	else if (odd.size() == 1)
-	{
-		front += (odd[0] + 'A');
-		reverse(end.begin(), end.end());
-		answer = front + end;
-	}
-	else
-	{
-		reverse(end.begin(), end.end());
-		answer = front + end;
-	}
+	answer += temp;
 
 	cout << answer;
 	return 0;
