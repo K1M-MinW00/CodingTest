@@ -21,39 +21,19 @@ int main()
 
 		stack<char>st;
 
-		bool good = true;
 		for (int i = 0; i < s.length(); ++i)
 		{
 			char cur = s[i];
 
-			if (st.empty())
-				st.push(cur);
-
+			if (st.size() && st.top() == cur)
+				st.pop();
 			else
-			{
-				char top = st.top();
-
-				if (top == cur)
-					st.pop();
-				else
-					st.push(cur);
-			}
+				st.push(cur);
 		}
 
-		if (st.size() >= 2)
-		{
-			char top = st.top();
-			st.pop();
-			char ttop = st.top();
-
-			if (top != ttop)
-				good = false;
-		}
-		else if (st.size() == 1)
-			good = false;
-
-		if (good)
+		if (st.empty())
 			answer++;
+
 	}
 
 	cout << answer;
