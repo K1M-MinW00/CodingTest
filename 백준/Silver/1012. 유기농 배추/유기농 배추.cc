@@ -5,7 +5,6 @@
 using namespace std;
 
 vector<vector<int>> v(50, vector<int>(50, 0));
-int answer = 0;
 int m, n;
 int mx[] = { 1,-1,0,0 };
 int my[] = { 0,0,1,-1 };
@@ -32,24 +31,19 @@ int main()
 	cin.tie(0);
 	cout.tie(0);
 
-	int T;
+	int T, k, x, y, answer;
 	cin >> T;
 
-	for (int test_case = 1; test_case <= T; ++test_case)
+	while (T--)
 	{
-		int k;
-		cin >> m >> n >> k;
 		answer = 0;
-
+		cin >> m >> n >> k;
 
 		for (int i = 0; i < k; ++i)
 		{
-			int x, y;
-
 			cin >> x >> y;
 			v[x][y] = 1;
 		}
-
 
 		for (int i = 0; i < m; ++i)
 		{
@@ -57,17 +51,15 @@ int main()
 			{
 				if (v[i][j] == 1)
 				{
-					dfs(i, j);
 					answer++;
+					dfs(i, j);
 				}
 			}
 		}
-
 		cout << answer << '\n';
 
 		for (int i = 0; i < m; ++i)
 			fill(v[i].begin(), v[i].end(), 0);
 	}
-
 	return 0;
 }
