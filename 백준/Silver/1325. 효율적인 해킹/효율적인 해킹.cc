@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <vector>
 #include <algorithm>
 #include <queue>
@@ -6,62 +7,54 @@
 using namespace std;
 
 int n, m;
+
 vector<vector<int>> v;
+vector<bool> visited;
 
-int bfs(int i)
+int dfs(int start)
 {
-	int cnt = 0;
-	vector<bool> visited(n+1,false);
-	queue<int> q;
-	q.push(i);
-	visited[i] = true;
-
-	while (!q.empty())
+	int ret = 1;
+	for (int e : v[start])
 	{
-		int cur = q.front();
-		q.pop();
-
-		for (int x : v[cur])
-		{
-			if (!visited[x])
-			{
-				visited[x] = true;
-				q.push(x);
-				++cnt;
-			}
-		}
+		if (visited[e])
+			continue;
+		visited[e] = true;
+		ret += dfs(e);
 	}
-	
-	return cnt;
+	return ret;
 }
 
 int main()
 {
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
+
 	cin >> n >> m;
-
-	v.resize(n+1);
-
-	int a, b;
+	v.resize(n + 1);
+	visited.resize(n + 1);
+	int s, e;
 	for (int i = 0; i < m; ++i)
 	{
-		cin >> a >> b;
-		v[b].push_back(a);
+		cin >> s >> e;
+		v[e].push_back(s);
 	}
 
-	vector<int> answer(n+1);
-	int max = 0;
-	for (int i = 1; i <= n; ++i)
-	{
-		answer[i] = bfs(i);
-		if (max < answer[i])
-			max = answer[i];
-	}
+	vector<int> cnt(n + 1, 0);
+	int maxValue = 0;
 
 	for (int i = 1; i <= n; ++i)
 	{
-		if (max == answer[i])
+		fill(visited.begin(), visited.end(), false);
+
+		visited[i] = true;
+		cnt[i] = dfs(i);
+		maxValue = max(cnt[i], maxValue);
+	}
+
+	for (int i = 1; i <= n; ++i)
+		if (maxValue == cnt[i])
 			cout << i << ' ';
-	}
 
 	return 0;
 }
