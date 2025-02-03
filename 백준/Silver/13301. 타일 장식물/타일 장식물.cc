@@ -7,7 +7,7 @@
 #include <regex>
 using namespace std;
 
-int arr[85] = { 0,1,1,2 };
+long long dp[10005];
 
 int main()
 {
@@ -18,16 +18,13 @@ int main()
 	int n;
 	cin >> n;
 
-	for (int i = 4; i <= n; ++i)
-		arr[i] = arr[i - 1] + arr[i - 2];
+	dp[1] = 1;
+	dp[2] = 1;
 
-	if (n == 1)
-		cout << 4;
-	else
-	{
-		long long sum = arr[n] * 4 + arr[n - 1] * 2;
-		cout << sum;
-	}
+	for (int i = 3; i <= n; ++i)
+		dp[i] = dp[i - 1] + dp[i - 2];
+
+	cout << dp[n] * 4 + dp[n - 1] * 2;
 
 	return 0;
 }
