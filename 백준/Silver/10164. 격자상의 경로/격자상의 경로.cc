@@ -14,7 +14,7 @@ int mx[] = { 1,0 };
 int my[] = { 0,1 };
 
 int v[16][16];
-bool visited[16][16];
+int n, m, k;
 int sr, sc, er, ec, kr, kc;
 
 void dfs(int r, int c, int tr, int tc)
@@ -33,7 +33,7 @@ void dfs(int r, int c, int tr, int tc)
 			int nr = r + mx[i];
 			int nc = c + my[i];
 
-			if (nr > tr || nc > tc)
+			if (nr > tr || nc > tc || nr >= n || nc >= m)
 				continue;
 
 			if (nr == tr && nc == tc)
@@ -52,13 +52,12 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(0); cout.tie(0);
 
-	int n, m, k;
 	cin >> n >> m >> k;
 
-	sr = 1, sc = 1;
-	er = n, ec = m;
+	sr = 0, sc = 0;
+	er = n - 1, ec = m - 1;
 
-	v[1][1] = 1;
+	v[0][0] = 1;
 
 	if (k == 0)
 	{
@@ -68,11 +67,30 @@ int main()
 		return 0;
 	}
 
-	kr = k / m + 1, kc = k % m;
+	k--;
+	kr = k / m, kc = k % m;
 
+	//cout << kr << ' ' << kc << '\n';
 	dfs(sr, sc, kr, kc);
+
+	//for (int i = 0; i < n; ++i)
+	//{
+	//	for (int j = 0; j < m; ++j)
+	//		cout << v[i][j] << ' ';
+	//	cout << '\n';
+	//}
+	//cout << '\n';
+
 	dfs(kr, kc, er, ec);
 
+
+	//for (int i = 0; i < n; ++i)
+	//{
+	//	for (int j = 0; j < m; ++j)
+	//		cout << v[i][j] << ' ';
+	//	cout << '\n';
+	//}
+	//cout << '\n';
 	cout << v[kr][kc] * v[er][ec];
 
 	return 0;
