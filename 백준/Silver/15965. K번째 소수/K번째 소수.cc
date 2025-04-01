@@ -10,7 +10,7 @@
 #include <cmath>
 #include <climits>
 
-#define MAX 1000001
+#define MAX 10000001
 
 using namespace std;
 long long k;
