@@ -39,7 +39,7 @@ int main()
 
 	while (l <= r)
 	{
-		long long m = (l + r) / 2;
+		long long m = (l + r) / (1LL *2);
 		long long cnt = 0;
 
 		for (int i = 0; i < s; ++i)
