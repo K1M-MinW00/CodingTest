@@ -31,23 +31,12 @@ int main()
 		sort(B.begin(), B.end());
 
 		int result = 0;
-		int idx = 0;
-		for (int i = 0; i < n; ++i)
-		{
-			for (int j = 0; j < m; ++j)
-			{
-				if (A[i] > B[j])
-				{
-					// cout << A[i] << ' ' << B[j] << '\n';
-					result++;
-				}
-				else
-				{
-					// idx = j;
-					break;
-				}
-			}
-		}
+		
+        for(int i = 0;i < n; ++i)
+        {
+            auto pos = lower_bound(B.begin(),B.end(),A[i]);
+            result += (int)(pos - B.begin());
+        }
 
 		cout << result << '\n';
 	}
