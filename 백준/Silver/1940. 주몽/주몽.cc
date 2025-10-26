@@ -1,29 +1,62 @@
 #include <iostream>
 #include <algorithm>
-#include <set>
 #include <vector>
+#include <queue>
+#include <stack>
+#include <map>
+#include <set>
+#include <string>
+#include <cstring>
+#include <cmath>
+#include <climits>
+#include <unordered_map>
+#include <bitset>
+#include <tuple>
 using namespace std;
+
 
 int main()
 {
 	ios::sync_with_stdio(false);
 	cin.tie(0); cout.tie(0);
 
-	int n, m, num;
-	cin >> n;
-	cin >> m;
+	int n, m;
+	cin >> n >> m;
 
-	set<int> s;
-	int answer = 0;
+	vector<int> v(n);
 
 	for (int i = 0; i < n; ++i)
 	{
-		cin >> num;
+		cin >> v[i];
+	}
 
-		if (s.find(m - num) != s.end())
+	if (n == 1)
+	{
+		cout << 0 << '\n';
+		return 0;
+	}
+
+	sort(v.begin(), v.end());
+
+	int l = 0, r = n - 1;
+	int sum = 0, answer = 0;
+
+	while (l < r)
+	{
+		sum = v[l] + v[r];
+
+		if (sum == m)
+		{
 			answer++;
+			l++;
+			r--;
+		}
+		else if (sum < m)
+		{
+			l++;
+		}
 		else
-			s.insert(num);
+			r--;
 	}
 
 	cout << answer;
