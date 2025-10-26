@@ -1,47 +1,70 @@
 #include <iostream>
+#include <algorithm>
 #include <vector>
+#include <queue>
 #include <stack>
-
+#include <map>
+#include <set>
+#include <string>
+#include <cstring>
+#include <cmath>
+#include <climits>
+#include <unordered_map>
+#include <bitset>
+#include <tuple>
 using namespace std;
 
 int main()
 {
+	ios::sync_with_stdio(false);
+	cin.tie(0); cout.tie(0);
+
 	int n;
 	cin >> n;
 
-	int input;
-
+	int cur = 1;
+	int num;
 	stack<int> st;
 	vector<char> answer;
-
-	st.push(0);
-
-	int idx = 1;
-	for (int i = 0; i < n; ++i)
+	bool solve = true;
+	for (int i = 1; i <= n; ++i)
 	{
-		cin >> input;
+		cin >> num;
 
-		while (st.top() < input)
-		{
-			st.push(idx);
-			idx++;
-			answer.push_back('+');
-		}
+		if (!solve)
+			continue;
 
-		if (st.top() == input)
+		if (num >= cur)
 		{
+			while (cur <= num)
+			{
+				st.push(cur++);
+				answer.push_back('+');
+			}
+
 			st.pop();
 			answer.push_back('-');
 		}
 		else
 		{
-			cout << "NO";
-			return 0;
+			if (st.top() == num)
+			{
+				st.pop();
+				answer.push_back('-');
+			}
+			else
+			{
+				solve = false;
+			}
 		}
 	}
 
-	for (int i = 0; i < answer.size(); ++i)
-		cout << answer[i] << '\n';
-
+	if (solve)
+	{
+		for (int i = 0; i < answer.size(); ++i)
+			cout << answer[i] << '\n';
+	}
+	else
+		cout << "NO";
 	return 0;
 }
