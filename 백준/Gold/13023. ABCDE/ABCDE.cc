@@ -1,52 +1,52 @@
 #include <iostream>
-#include <algorithm>
 #include <vector>
-#include <queue>
-#include <stack>
-#include <map>
-#include <set>
 #include <string>
-#include <cstring>
-#include <cmath>
+#include <algorithm>
+#include <set>
+#include <map>
 #include <climits>
+#include <stack>
+#include <queue>
 
 using namespace std;
-#define MAX 2001
 
 int n, m;
-vector<int> v[MAX];
-vector<bool> visited(MAX, false);
+vector<vector<int>> v;
+vector<bool> visited;
+bool answer = false;
 
-bool isPossible;
-
-void dfs(int idx, int cnt)
+void dfs(int num, int idx)
 {
-	if (cnt == 4)
+	if (idx == 5)
 	{
-		isPossible = true;
+		answer = true;
 		return;
 	}
 
-	visited[idx] = true;
+	visited[num] = true;
 
-	for (int next : v[idx])
+	for (int next : v[num])
 	{
-		if (!visited[next])
-		{
-			dfs(next, cnt + 1);
-			visited[next] = false;
-		}
+		if (visited[next])
+			continue;
+
+		dfs(next, idx + 1);
+		visited[next] = false;
 	}
 }
+
+
 int main()
 {
 	ios::sync_with_stdio(false);
-	cin.tie(0); cout.tie(0);
+	cin.tie(0);
+	cout.tie(0);
 
 	cin >> n >> m;
+	v.resize(n + 1);
+	visited.resize(n + 1);
 
 	int a, b;
-
 	for (int i = 0; i < m; ++i)
 	{
 		cin >> a >> b;
@@ -56,19 +56,14 @@ int main()
 
 	for (int i = 0; i < n; ++i)
 	{
-		if (!visited[i])
-		{
-			dfs(i, 0);
-			visited[i] = false;
-		}
+		dfs(i, 1);
+		visited[i] = false;
 
-		if (isPossible)
-		{
-			cout << 1;
-			return 0;
-		}
+		if (answer)
+			break;
 	}
 
-	cout << 0;
+	cout << answer;
+
 	return 0;
 }
