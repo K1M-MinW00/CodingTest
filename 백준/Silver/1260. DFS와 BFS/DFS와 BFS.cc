@@ -1,76 +1,85 @@
 #include <iostream>
-#include <queue>
 #include <vector>
-#include <stack>
+#include <string>
 #include <algorithm>
+#include <set>
+#include <map>
+#include <climits>
+#include <stack>
+#include <queue>
 
 using namespace std;
 
-vector<vector<int>> graph;
+int n, m, s;
+vector<vector<int>> v;
 vector<bool> visited;
+bool answer = false;
 
-void dfs(int v)
+void dfs(int num)
 {
-	cout << v << ' ';
+	if (visited[num])
+		return;
 
-	visited[v] = true;
+	cout << num << ' ';
+	visited[num] = true;
 
-	for (auto x : graph[v])
+	for (int next : v[num])
 	{
-		if (!visited[x])
-			dfs(x);
+		dfs(next);
 	}
 }
 
-void bfs(int v)
+void bfs(int num)
 {
 	queue<int> q;
-	q.push(v);
-	visited[v] = true;
+	q.push(num);
 
-	while (!q.empty())
+	while (q.size())
 	{
-		int x = q.front();
+		int cur = q.front();
 		q.pop();
 
-		cout << x << ' ';
+		if (visited[cur])
+			continue;
 
-		for (auto e : graph[x])
+		cout << cur << ' ';
+		visited[cur] = true;
+
+		for (int next : v[cur])
 		{
-			if (!visited[e])
-			{
-				q.push(e);
-				visited[e] = true;
-			}
+			if (visited[next])
+				continue;
+
+			q.push(next);
 		}
 	}
 }
 
 int main()
 {
-	int n, m, v;
-	cin >> n >> m >> v;
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
 
-	graph.resize(n + 1);
+	cin >> n >> m >> s;
+	v.resize(n + 1);
 	visited.resize(n + 1);
 
+	int a, b;
 	for (int i = 0; i < m; ++i)
 	{
-		int s, e;
-		cin >> s >> e;
-
-		graph[s].push_back(e);
-		graph[e].push_back(s);
+		cin >> a >> b;
+		v[a].push_back(b);
+		v[b].push_back(a);
 	}
 
-	for (int i = 0; i <= n; ++i)
-		sort(graph[i].begin(), graph[i].end());
-
-	dfs(v);
+	for (int i = 1; i <= n; ++i)
+		sort(v[i].begin(), v[i].end());
+	dfs(s);
 	cout << '\n';
 
 	fill(visited.begin(), visited.end(), false);
-	bfs(v);
 
+	bfs(s);
 	return 0;
 }
