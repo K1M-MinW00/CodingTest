@@ -1,84 +1,89 @@
 #include <iostream>
-#include <algorithm>
 #include <vector>
-#include <queue>
-#include <stack>
-#include <map>
-#include <set>
 #include <string>
-#include <cstring>
-#include <cmath>
+#include <algorithm>
+#include <set>
+#include <map>
 #include <climits>
+#include <stack>
+#include <queue>
 
 using namespace std;
 
-int n;
+int n, m;
 vector<vector<pair<int, int>>> v;
-vector<bool> visited;
+vector<int> d;
 
-int answer = 0, vertex = 0;
-
-void dfs(int cur, int d)
+void bfs(int s)
 {
+	vector<bool> visited(n + 1);
+	fill(d.begin(), d.end(), 0);
+	queue<int> q;
+	q.push(s);
+	visited[s] = true;
 
-	if (visited[cur])
-		return;
-
-	visited[cur] = true;
-
-	if (answer < d)
+	while (q.size())
 	{
-		answer = d;
-		vertex = cur;
-	}
+		int cur = q.front();
+		q.pop();
 
-	for (auto e : v[cur])
-	{
-		int next = e.first;
-		int len = e.second;
+		for (int i = 0; i < v[cur].size(); ++i)
+		{
+			int next = v[cur][i].first;
+			int dist = v[cur][i].second;
 
-		dfs(next, len + d);
+			if (visited[next])
+				continue;
+
+			visited[next] = true;
+			q.push(next);
+			d[next] = d[cur] + dist;
+		}
 	}
 }
-
 
 int main()
 {
 	ios::sync_with_stdio(false);
-	cin.tie(0); cout.tie(0);
+	cin.tie(0);
+	cout.tie(0);
 
 	cin >> n;
 
-	v.resize(n + 2);
-	visited.resize(n + 2);
+	v.resize(n + 1);
+	d.resize(n + 1);
 
-	int start, end, length;
-
+	int num, a, b;
 	for (int i = 1; i <= n; ++i)
 	{
-		cin >> start;
+		cin >> num;
 
 		while (1)
 		{
-			cin >> end;
+			cin >> a;
 
-			if (end == -1)
+			if (a == -1)
 				break;
 
-			cin >> length;
+			cin >> b;
 
-			v[start].push_back({ start,length });
-			v[end].push_back({ start,length });
+			v[num].push_back({ a, b });
 		}
 	}
 
-	dfs(1, 0);
+	bfs(1);
 
-	fill(visited.begin(), visited.end(), false);
+	int idx = 1;
+	for (int i = 2; i <= n; ++i)
+	{
+		if (d[idx] < d[i])
+			idx = i;
+	}
 
-	answer = 0;
-	dfs(vertex, 0);
+	bfs(idx);
 
-	cout << answer;
+	sort(d.begin(), d.end());
+	cout << d[n];
+
 	return 0;
 }
