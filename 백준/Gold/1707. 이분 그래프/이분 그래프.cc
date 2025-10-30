@@ -1,85 +1,91 @@
 #include <iostream>
-#include <string>
-#include <vector>
 #include <algorithm>
+#include <vector>
 #include <queue>
-#include <climits>
+#include <stack>
+#include <map>
+#include <set>
+#include <string>
 #include <cstring>
+#include <cmath>
+#include <climits>
+#include <unordered_map>
+#include <bitset>
+#include <tuple>
+#include <sstream>
 using namespace std;
 
-#define MAX 20001
-int n, m, k, answer;
+int n, m;
+vector<vector<int>> v;
+vector<int> color;
+vector<bool> visited;
 
-vector<int> v[MAX];
-int visited[MAX];
+bool answer;
 
-void dfs(int cur, int color)
+void dfs(int cur)
 {
-	visited[cur] = color;
+	visited[cur] = true;
 
 	for (int next : v[cur])
 	{
-		if (visited[next])
-			continue;
-		int next_color = (color == 1) ? 2 : 1;
-		dfs(next, next_color);
-	}
-}
-
-bool check()
-{
-	for (int i = 1; i <= n; ++i)
-	{
-		for (int j : v[i])
+		if (visited[next] == false)
 		{
-			if (visited[j] == visited[i])
-				return false;
+			color[next] = (color[cur] + 1) % 2;
+			dfs(next);
+		}
+		else if (color[next] == color[cur])
+		{
+			answer = false;
+			break;
 		}
 	}
-	return true;
 }
-
 int main()
 {
 	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cout.tie(0);
+	cin.tie(0); cout.tie(0);
 
-	cin >> k;
+	int t;
+	cin >> t;
 
-	while (k--)
+	while (t--)
 	{
 		cin >> n >> m;
 
-		memset(visited, 0, sizeof(visited));
-		for (int i = 1; i <= n; ++i)
-			v[i].clear();
+		v.resize(n + 1);
+		color.resize(n + 1);
+		visited.resize(n + 1);
+		answer = true;
 
-		int s, e;
-
+		int a, b;
 		for (int i = 0; i < m; ++i)
 		{
-			cin >> s >> e;
-			v[s].push_back(e);
-			v[e].push_back(s);
+			cin >> a >> b;
+			v[a].push_back(b);
+			v[b].push_back(a);
 		}
 
 		for (int i = 1; i <= n; ++i)
 		{
-			if (!visited[i])
-				dfs(i, 1);
+			if (answer)
+				dfs(i);
+			else
+				break;
 		}
 
-		bool answer = check();
-
-
 		if (answer)
-			cout << "YES" << '\n';
+			cout << "YES\n";
 		else
-			cout << "NO" << '\n';
+			cout << "NO\n";
 
+		for (int i = 0; i <= n; ++i)
+		{
+			v[i].clear();
+			visited[i] = false;
+			color[i] = 0;
+		}
+		
 	}
-
 
 	return 0;
 }
