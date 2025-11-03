@@ -1,34 +1,50 @@
 #include <iostream>
 #include <algorithm>
-#include <stack>
-#include <queue>
 #include <vector>
+#include <queue>
+#include <stack>
+#include <map>
+#include <set>
 #include <string>
-#include <unordered_set>
+#include <cstring>
+#include <cmath>
+#include <climits>
+#include <unordered_map>
+#include <bitset>
+#include <tuple>
+
 using namespace std;
 
-
 int n, m;
-vector<int> v;
+vector<int> parent;
 
-int Find(int a)
+int find(int a)
 {
-	if (v[a] == a)
+	if (parent[a] == a)
 		return a;
-	return v[a] = Find(v[a]);
+
+	return parent[a] = find(parent[a]);
 }
 
 void Union(int a, int b)
 {
-	int parent_a = Find(a);
-	int parent_b = Find(b);
+	a = find(a);
+	b = find(b);
 
-	if (parent_a > parent_b)
-		v[parent_a] = parent_b;
-	else
-		v[parent_b] = parent_a;
+	if (a != b)
+		parent[b] = a;
 }
 
+bool check(int a, int b)
+{
+	a = find(a);
+	b = find(b);
+
+	if (a == b)
+		return true;
+
+	return false;
+}
 int main()
 {
 	ios::sync_with_stdio(false);
@@ -36,12 +52,12 @@ int main()
 
 	cin >> n >> m;
 
-	v.resize(n + 1);
+	parent.resize(n + 1);
 
 	for (int i = 0; i <= n; ++i)
-		v[i] = i;
+		parent[i] = i;
 
-	int a, b, op;
+	int op, a, b;
 
 	for (int i = 0; i < m; ++i)
 	{
@@ -51,12 +67,12 @@ int main()
 		{
 			Union(a, b);
 		}
-		else
+		else if (op == 1)
 		{
-			if (Find(a) == Find(b))
-				cout << "YES" << '\n';
+			if (check(a, b))
+				cout << "YES\n";
 			else
-				cout << "NO" << "\n";
+				cout << "NO\n";
 		}
 	}
 
