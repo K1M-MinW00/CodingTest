@@ -1,82 +1,68 @@
 #include <iostream>
 #include <algorithm>
-#include <stack>
-#include <queue>
 #include <vector>
-#include <string>
-#include <list>
-#include <set>
+#include <queue>
+#include <stack>
 #include <map>
-#include <climits>
+#include <set>
+#include <string>
 #include <cstring>
+#include <cmath>
+#include <climits>
+#include <unordered_map>
+#include <bitset>
+#include <tuple>
 
 using namespace std;
 
-#define MAX 201
+#define N 201
 
-int A, B, C;
-bool visited[MAX][MAX][MAX];
+int sender[] = { 0,0,1,1,2,2 };
+int receiver[] = { 1,2,0,2,0,1 };
 
-set<int> s;
+bool visited[N][N];
+vector<int> answer;
 
-struct t { int a, b, c; };
+int cur[3];
 
-void solve()
+void bfs()
 {
-	queue<t> q;
-	q.push({ 0,0,C });
+	queue<pair<int, int>> q;
+	q.push({ 0,0 });
+
+	visited[0][0] = true;
+	answer.push_back(cur[2]);
 
 	while (q.size())
 	{
-		int a = q.front().a;
-		int b = q.front().b;
-		int c = q.front().c;
-
+		int a = q.front().first;
+		int b = q.front().second;
+		int c = cur[2] - a - b;
 		q.pop();
 
-		if (visited[a][b][c])
-			continue;
+		for (int i = 0; i < 6; ++i)
+		{
+			int next[] = { a,b,c };
+			next[receiver[i]] += next[sender[i]];
+			next[sender[i]] = 0;
 
-		visited[a][b][c] = true;
+			if (next[receiver[i]] > cur[receiver[i]])
+			{
+				next[sender[i]] = next[receiver[i]] - cur[receiver[i]];
+				next[receiver[i]] = cur[receiver[i]];
+			}
 
-		if (a == 0)
-			s.insert(c);
+			if (!visited[next[0]][next[1]])
+			{
+				visited[next[0]][next[1]] = true;
+				q.push({ next[0],next[1] });
 
-		// A -> B
-		if (a + b > B)
-			q.push({ a + b - B,B,c });
-		else
-			q.push({ 0,a + b,c });
-
-		// A -> C
-		if (a + c > C)
-			q.push({ a + c - C,b,C });
-		else
-			q.push({ 0,b,a + c });
-
-		// B -> A
-		if (a + b > A)
-			q.push({ A,a + b - A,c });
-		else
-			q.push({ a + b,0,c });
-
-		// B -> C
-		if (b + c > C)
-			q.push({ a,b + c - C,C });
-		else
-			q.push({ a,0,b + c });
-
-		// C -> A
-		if (a + c > A)
-			q.push({ A,b,a + c - A });
-		else
-			q.push({ a + c,b,0 });
-
-		// C -> B
-		if (b + c > B)
-			q.push({ a,B,b + c - B });
-		else
-			q.push({ a,b + c,0 });
+				if (next[0] == 0)
+				{
+					answer.push_back(next[2]);
+				}
+			}
+		}
 	}
 }
 
@@ -85,12 +71,14 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(0); cout.tie(0);
 
-	cin >> A >> B >> C;
+	cin >> cur[0] >> cur[1] >> cur[2];
 
-	solve();
+	bfs();
 
-	for (int e : s)
-		cout << e << ' ';
+	sort(answer.begin(), answer.end());
+
+	for (int i : answer)
+		cout << i << ' ';
 
 	return 0;
 }
