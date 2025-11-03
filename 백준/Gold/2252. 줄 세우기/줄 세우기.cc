@@ -1,45 +1,46 @@
 #include <iostream>
-#include <cstring>
 #include <algorithm>
-#include <set>
-#include <map>
 #include <vector>
-#include <cmath>
 #include <queue>
 #include <stack>
+#include <map>
+#include <set>
+#include <string>
+#include <cstring>
+#include <cmath>
+#include <climits>
+#include <unordered_map>
+#include <bitset>
+#include <tuple>
 
 using namespace std;
 
 int n, m;
+vector<vector<int>> v;
 vector<int> inDegree;
-vector<vector<int>> graph;
-queue<int> q;
 
-void topology_sort()
+void topology()
 {
-	for (int cur = 1; cur <= n; ++cur)
+	queue<int> q;
+
+	for (int i = 1; i <= n; ++i)
 	{
-		if (inDegree[cur] == 0)
-			q.push(cur);
+		if (inDegree[i] == 0)
+			q.push(i);
 	}
 
-	for (int i = 0; i < n; ++i)
+	while (q.size())
 	{
-		if (q.empty())
-		{
-			cout << "cycle 발생\n";
-			return;
-		}
-
 		int cur = q.front();
 		q.pop();
 
 		cout << cur << ' ';
 
-		for (int k = 0; k < graph[cur].size(); ++k)
+		for (int next : v[cur])
 		{
-			int next = graph[cur][k];
-			if (--inDegree[next] == 0)
+			inDegree[next]--;
+
+			if (inDegree[next] == 0)
 				q.push(next);
 		}
 	}
@@ -48,23 +49,23 @@ void topology_sort()
 int main()
 {
 	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cout.tie(0);
+	cin.tie(0); cout.tie(0);
 
 	cin >> n >> m;
 
+	v.resize(n + 1);
 	inDegree.resize(n + 1);
-	graph.resize(n + 1);
 
-	int a, b;
 	for (int i = 0; i < m; ++i)
 	{
+		int a, b;
 		cin >> a >> b;
-		graph[a].emplace_back(b);
+
+		v[a].push_back(b);
 		inDegree[b]++;
 	}
 
-	topology_sort();
+	topology();
 
 	return 0;
 }
