@@ -1,69 +1,85 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
+#include <vector>
 #include <queue>
+#include <stack>
+#include <map>
+#include <set>
+#include <string>
+#include <cstring>
+#include <cmath>
 #include <climits>
+#include <unordered_map>
+#include <bitset>
+#include <tuple>
+
 using namespace std;
 
-int v, e, k;
+int n, m, k;
+vector<vector<pair<int, int>>> v;
+vector<int> d;
 
-vector<vector<pair<int, int>>> graph;
-vector<int> dist;
-
-void solve()
+void dijkstra()
 {
+	vector<bool> visited(n + 1);
+
 	priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
 	pq.push({ 0,k });
 
-	dist[k] = 0;
+	d[k] = 0;
 
-	while (!pq.empty())
+	while (pq.size())
 	{
-		int distance = pq.top().first;
+		int cur_d = pq.top().first;
 		int cur = pq.top().second;
 		pq.pop();
 
-		for (auto edge : graph[cur])
-		{
-			int to = edge.first;
-			int weight = edge.second;
+		if (visited[cur])
+			continue;
 
-			if (dist[to] > distance + weight)
+		visited[cur] = true;
+
+		for (int i = 0; i < v[cur].size(); ++i)
+		{
+			int next = v[cur][i].first;
+			int weight = v[cur][i].second;
+
+			if (d[next] > d[cur] + weight)
 			{
-				dist[to] = distance + weight;
-				pq.push({ dist[to],to });
+				d[next] = d[cur] + weight;
+				pq.push({ d[next],next });
 			}
 		}
 	}
 
-	for (int i = 1; i <= v; ++i)
+	for (int i = 1; i <= n; ++i)
 	{
-		if (dist[i] == INT_MAX)
-			cout << "INF" << '\n';
+		if (visited[i])
+			cout << d[i] << '\n';
 		else
-			cout << dist[i] << '\n';
+			cout << "INF" << '\n';
 	}
 }
 
 int main()
 {
 	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cout.tie(0);
+	cin.tie(0); cout.tie(0);
 
-	cin >> v >> e >> k;
+	cin >> n >> m >> k;
 
-	graph.resize(v + 1);
-	dist.resize(v + 1, INT_MAX);
+	v.resize(n + 1);
+	d.resize(n + 1, INT_MAX);
 
-	int from, to, weight;
-	for (int i = 0; i < e; ++i)
+	for (int i = 0; i < m; ++i)
 	{
-		cin >> from >> to >> weight;
-		graph[from].push_back({ to,weight });
+		int a, b, w;
+		cin >> a >> b >> w;
+
+		v[a].push_back({ b,w });
 	}
 
-	solve();
+	dijkstra();
 
 	return 0;
 }
