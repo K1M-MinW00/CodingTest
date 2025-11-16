@@ -1,43 +1,54 @@
 #include <iostream>
+#include <algorithm>
 #include <vector>
+#include <queue>
+#include <stack>
+#include <map>
+#include <set>
+#include <string>
+#include <cstring>
+#include <cmath>
+#include <climits>
+#include <unordered_map>
+#include <unordered_set>
+#include <bitset>
+#include <tuple>
+#include <sstream>
 
 using namespace std;
 
-int dp[31][31] = { 0, };
 
-int func(int n, int m)
-{
-	if (dp[n][m] != 0)
-		return dp[n][m];
-	
-	if (n == 1)
-		return dp[n][m] = m;
-	else
-	{
-		for (int i = n - 1; i < m; ++i)
-			dp[n][m] += func(n - 1, i);
-
-		return dp[n][m];
-	}
-}
 int main()
 {
+	ios::sync_with_stdio(false);
+	cin.tie(0); cout.tie(0);
+
 	int t;
 	cin >> t;
 
-	for (int i = 1; i < 30; ++i)
+	int dp[31][31];
+
+	for (int i = 0; i < 31; ++i)
 	{
-		for (int j = i; j < 30; ++j)
-				func(i, j);
+		dp[i][1] = 1;
+		dp[i][i] = 1;
+		dp[i][0] = 1;
 	}
 
-	for (int i = 1; i <= t; ++i)
+	for (int i = 2; i < 31; ++i)
+	{
+		for (int j = 1; j < i; ++j)
+		{
+			dp[i][j] = dp[i - 1][j] + dp[i - 1][j - 1];
+		}
+	}
+
+	while (t--)
 	{
 		int n, m;
 		cin >> n >> m;
 
-		cout << dp[n][m] << '\n';
+		cout << dp[m][n] << '\n';
 	}
-
 	return 0;
 }
