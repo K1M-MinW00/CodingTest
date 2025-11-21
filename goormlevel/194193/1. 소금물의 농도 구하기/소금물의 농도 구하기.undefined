@@ -5,15 +5,15 @@ int main() {
 	float n,m;
 	cin >> n >> m;
 
-	float salt = (n * 7) / 100;
-
+	float salt = n * 7 / 100;
 	float sum = n + m;
 
 	float answer = salt / sum * 100;
-	answer = floor(answer * 100)/100;
+	answer = floor(answer*100)/100;
 
 	cout << fixed;
 	cout.precision(2);
+
 	cout << answer;
 	return 0;
 }
