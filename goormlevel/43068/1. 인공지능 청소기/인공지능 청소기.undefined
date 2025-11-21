@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main() {
+	int t;
+	cin >> t;
+
+	while(t--)
+	{
+		int x,y,n;
+		cin >> x >> y >> n;
+
+		bool answer = true;
+		
+		if((x + y + n) % 2 != 0)
+			answer = false;
+
+		if(abs(x) + abs(y) > n )
+			answer = false;
+
+		if(answer)
+			cout << "YES" << '\n';
+		else
+			cout << "NO" << '\n';
+	}
+	return 0;
+}
