@@ -1,6 +1,16 @@
 #include <iostream>
 #include <vector>
+#include <string>
+#include <algorithm>
+#include <map>
+#include <stack>
+
 using namespace std;
+
+int n;
+int t[16];
+int p[16];
+int dp[17];
 
 int main()
 {
@@ -8,24 +18,19 @@ int main()
 	cin.tie(0);
 	cout.tie(0);
 
-	int n;
 	cin >> n;
 
-	vector<pair<int, int>> v(n + 2);
-
-	vector<int> dp(n + 2);
-
 	for (int i = 1; i <= n; ++i)
-		cin >> v[i].first >> v[i].second;
+		cin >> t[i] >> p[i];
 
-	for (int i = n; i >= 1; --i)
+
+	for (int i = n; i > 0; --i)
 	{
-		int deadLine = i + v[i].first;
-
-		if (deadLine <= n + 1)
-			dp[i] = max(dp[i + 1], dp[deadLine] + v[i].second);
-		else
+		if (i + t[i] > n + 1)
 			dp[i] = dp[i + 1];
+
+		else
+			dp[i] = max(dp[i + 1], dp[i + t[i]] + p[i]);
 	}
 
 	cout << dp[1];
