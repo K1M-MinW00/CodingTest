@@ -10,9 +10,11 @@
 #include <cmath>
 #include <climits>
 #include <unordered_map>
+#include <unordered_set>
 #include <bitset>
 #include <tuple>
 #include <sstream>
+
 using namespace std;
 
 int main()
@@ -23,32 +25,22 @@ int main()
 	int n;
 	cin >> n;
 
-	vector<pair<double, double>> v(n);
+	vector<pair<double, double>> v(n + 1);
 
 	for (int i = 0; i < n; ++i)
-	{
 		cin >> v[i].first >> v[i].second;
-	}
 
-	v.push_back(v[0]);
+	v[n] = v[0];
 
-	double sum = 0;
-	double x1, x2, y1, y2;
+	double answer = 0;
 
 	for (int i = 0; i < n; ++i)
-	{
-		x1 = v[i].first, y1 = v[i].second;
-		x2 = v[i + 1].first, y2 = v[i+1].second;
-
-		sum += (x1 * y2) - (x2 * y1);
-	}
-
-	sum = abs(sum);
-	sum /= (double)2;
+		answer += (v[i].first * v[i + 1].second) - (v[i + 1].first * v[i].second);
 
 	cout << fixed;
 	cout.precision(1);
+	cout << abs(answer) / 2.0;
 
-	cout << sum;
+
 	return 0;
 }
