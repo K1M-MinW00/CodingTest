@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660" role="img" aria-labelledby="title desc">
+<title id="title">Coding Test algorithm statistics</title>
+<desc id="desc">720 archived problems. Algorithm counts from 672 Baekjoon problems. Graph theory 146, implementation 137, mathematics 135. Multiple tags per problem are counted separately.</desc>
+<rect width="1200" height="660" rx="18" fill="#0d1117"/>
+<text x="36" y="48" font-family="DejaVu Sans,Arial,sans-serif" font-size="25" fill="#e6edf3" text-anchor="start" font-weight="700">ALGORITHM PRACTICE</text>
+<text x="36" y="77" font-family="DejaVu Sans,Arial,sans-serif" font-size="14" fill="#9da7b3" text-anchor="start" font-weight="400">K1M-MinW00 / CodingTest</text>
+<text x="1164" y="45" font-family="DejaVu Sans,Arial,sans-serif" font-size="22" fill="#58d6a0" text-anchor="end" font-weight="700">720 PROBLEMS</text>
+<text x="1164" y="74" font-family="DejaVu Sans,Arial,sans-serif" font-size="13" fill="#9da7b3" text-anchor="end" font-weight="400">Snapshot 2026-09-03</text>
+<line x1="36" y1="100" x2="1164" y2="100" stroke="#30363d"/>
+<text x="36" y="136" font-family="DejaVu Sans,Arial,sans-serif" font-size="18" fill="#e6edf3" text-anchor="start" font-weight="700">Practice by topic</text>
+<text x="36" y="161" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" fill="#9da7b3" text-anchor="start" font-weight="400">8 selected tags · shared count scale</text>
+<polygon points="275.0,332.8 302.8,344.2 314.2,372.0 302.8,399.8 275.0,411.2 247.2,399.8 235.8,372.0 247.2,344.2" fill="none" stroke="#30363d" stroke-dasharray="4 5"/>
+<text x="282" y="336.75" font-family="DejaVu Sans,Arial,sans-serif" font-size="10" fill="#9da7b3" text-anchor="start" font-weight="400">40</text>
+<polygon points="275.0,293.5 330.5,316.5 353.5,372.0 330.5,427.5 275.0,450.5 219.5,427.5 196.5,372.0 219.5,316.5" fill="none" stroke="#30363d" stroke-dasharray="4 5"/>
+<text x="282" y="297.5" font-family="DejaVu Sans,Arial,sans-serif" font-size="10" fill="#9da7b3" text-anchor="start" font-weight="400">80</text>
+<polygon points="275.0,254.2 358.3,288.7 392.8,372.0 358.3,455.3 275.0,489.8 191.7,455.3 157.2,372.0 191.7,288.7" fill="none" stroke="#30363d" stroke-dasharray="4 5"/>
+<text x="282" y="258.25" font-family="DejaVu Sans,Arial,sans-serif" font-size="10" fill="#9da7b3" text-anchor="start" font-weight="400">120</text>
+<polygon points="275.0,215.0 386.0,261.0 432.0,372.0 386.0,483.0 275.0,529.0 164.0,483.0 118.0,372.0 164.0,261.0" fill="none" stroke="#30363d" stroke-dasharray="4 5"/>
+<text x="282" y="219.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="10" fill="#9da7b3" text-anchor="start" font-weight="400">160</text>
+<line x1="275" y1="372" x2="275.0" y2="215.0" stroke="#30363d"/>
+<text x="275.0" y="175.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" fill="#e6edf3" text-anchor="middle" font-weight="400">Math</text>
+<text x="275.0" y="192.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" fill="#58d6a0" text-anchor="middle" font-weight="700">135</text>
+<line x1="275" y1="372" x2="386.01576464628795" y2="260.98423535371205" stroke="#30363d"/>
+<text x="414.30003589374985" y="232.69996410625015" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" fill="#e6edf3" text-anchor="middle" font-weight="400">Implementation</text>
+<text x="414.30003589374985" y="249.69996410625015" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" fill="#58d6a0" text-anchor="middle" font-weight="700">137</text>
+<line x1="275" y1="372" x2="432.0" y2="372.0" stroke="#30363d"/>
+<text x="472.0" y="372.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" fill="#e6edf3" text-anchor="middle" font-weight="400">Greedy</text>
+<text x="472.0" y="389.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" fill="#58d6a0" text-anchor="middle" font-weight="700">66</text>
+<line x1="275" y1="372" x2="386.01576464628795" y2="483.01576464628795" stroke="#30363d"/>
+<text x="414.30003589374985" y="511.30003589374985" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" fill="#e6edf3" text-anchor="middle" font-weight="400">Strings</text>
+<text x="414.30003589374985" y="528.3000358937499" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" fill="#58d6a0" text-anchor="middle" font-weight="700">77</text>
+<line x1="275" y1="372" x2="275.0" y2="529.0" stroke="#30363d"/>
+<text x="275.0" y="569.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" fill="#e6edf3" text-anchor="middle" font-weight="400">Data structures</text>
+<text x="275.0" y="586.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" fill="#58d6a0" text-anchor="middle" font-weight="700">120</text>
+<line x1="275" y1="372" x2="163.98423535371205" y2="483.01576464628795" stroke="#30363d"/>
+<text x="135.69996410625015" y="511.30003589374985" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" fill="#e6edf3" text-anchor="middle" font-weight="400">Graph theory</text>
+<text x="135.69996410625015" y="528.3000358937499" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" fill="#58d6a0" text-anchor="middle" font-weight="700">146</text>
+<line x1="275" y1="372" x2="118.0" y2="372.0" stroke="#30363d"/>
+<text x="78.0" y="372.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" fill="#e6edf3" text-anchor="middle" font-weight="400">DP</text>
+<text x="78.0" y="389.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" fill="#58d6a0" text-anchor="middle" font-weight="700">102</text>
+<line x1="275" y1="372" x2="163.984235353712" y2="260.98423535371205" stroke="#30363d"/>
+<text x="135.6999641062501" y="232.69996410625015" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" fill="#e6edf3" text-anchor="middle" font-weight="400">Geometry</text>
+<text x="135.6999641062501" y="249.69996410625015" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" fill="#58d6a0" text-anchor="middle" font-weight="700">13</text>
+<polygon points="275.0,239.5 370.1,276.9 339.8,372.0 328.4,425.4 275.0,489.8 173.7,473.3 174.9,372.0 266.0,363.0" fill="#58d6a0" fill-opacity="0.14" stroke="#58d6a0" stroke-width="2.5"/>
+<circle cx="275.0" cy="239.53125" r="3" fill="#58d6a0"/>
+<circle cx="370.05724847838405" cy="276.94275152161595" r="3" fill="#58d6a0"/>
+<circle cx="339.7625" cy="372.0" r="3" fill="#58d6a0"/>
+<circle cx="328.4263367360261" cy="425.4263367360261" r="3" fill="#58d6a0"/>
+<circle cx="275.0" cy="489.75" r="3" fill="#58d6a0"/>
+<circle cx="173.69811476026226" cy="473.30188523973777" r="3" fill="#58d6a0"/>
+<circle cx="174.9125" cy="372.0" r="3" fill="#58d6a0"/>
+<circle cx="265.9799691224891" cy="362.9799691224891" r="3" fill="#58d6a0"/>
+<text x="570" y="136" font-family="DejaVu Sans,Arial,sans-serif" font-size="18" fill="#e6edf3" text-anchor="start" font-weight="700">Most practiced algorithms</text>
+<text x="570" y="161" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" fill="#9da7b3" text-anchor="start" font-weight="400">Top 10 tags · number of archived problems</text>
+<text x="570" y="200" font-family="DejaVu Sans,Arial,sans-serif" font-size="13" fill="#e6edf3" text-anchor="start" font-weight="400">Graph theory</text>
+<rect x="785" y="188" width="315" height="16" rx="4" fill="#21262d"/>
+<rect x="785" y="188" width="287.44" height="16" rx="4" fill="#58d6a0"/>
+<text x="1154" y="200" font-family="DejaVu Sans,Arial,sans-serif" font-size="14" fill="#e6edf3" text-anchor="end" font-weight="700">146</text>
+<text x="570" y="236" font-family="DejaVu Sans,Arial,sans-serif" font-size="13" fill="#e6edf3" text-anchor="start" font-weight="400">Implementation</text>
+<rect x="785" y="224" width="315" height="16" rx="4" fill="#21262d"/>
+<rect x="785" y="224" width="269.72" height="16" rx="4" fill="#58d6a0"/>
+<text x="1154" y="236" font-family="DejaVu Sans,Arial,sans-serif" font-size="14" fill="#e6edf3" text-anchor="end" font-weight="700">137</text>
+<text x="570" y="272" font-family="DejaVu Sans,Arial,sans-serif" font-size="13" fill="#e6edf3" text-anchor="start" font-weight="400">Mathematics</text>
+<rect x="785" y="260" width="315" height="16" rx="4" fill="#21262d"/>
+<rect x="785" y="260" width="265.78" height="16" rx="4" fill="#58d6a0"/>
+<text x="1154" y="272" font-family="DejaVu Sans,Arial,sans-serif" font-size="14" fill="#e6edf3" text-anchor="end" font-weight="700">135</text>
+<text x="570" y="308" font-family="DejaVu Sans,Arial,sans-serif" font-size="13" fill="#e6edf3" text-anchor="start" font-weight="400">Data structures</text>
+<rect x="785" y="296" width="315" height="16" rx="4" fill="#21262d"/>
+<rect x="785" y="296" width="236.25" height="16" rx="4" fill="#79c0ff"/>
+<text x="1154" y="308" font-family="DejaVu Sans,Arial,sans-serif" font-size="14" fill="#e6edf3" text-anchor="end" font-weight="700">120</text>
+<text x="570" y="344" font-family="DejaVu Sans,Arial,sans-serif" font-size="13" fill="#e6edf3" text-anchor="start" font-weight="400">Graph traversal</text>
+<rect x="785" y="332" width="315" height="16" rx="4" fill="#21262d"/>
+<rect x="785" y="332" width="230.34" height="16" rx="4" fill="#79c0ff"/>
+<text x="1154" y="344" font-family="DejaVu Sans,Arial,sans-serif" font-size="14" fill="#e6edf3" text-anchor="end" font-weight="700">117</text>
+<text x="570" y="380" font-family="DejaVu Sans,Arial,sans-serif" font-size="13" fill="#e6edf3" text-anchor="start" font-weight="400">Dynamic programming</text>
+<rect x="785" y="368" width="315" height="16" rx="4" fill="#21262d"/>
+<rect x="785" y="368" width="200.81" height="16" rx="4" fill="#79c0ff"/>
+<text x="1154" y="380" font-family="DejaVu Sans,Arial,sans-serif" font-size="14" fill="#e6edf3" text-anchor="end" font-weight="700">102</text>
+<text x="570" y="416" font-family="DejaVu Sans,Arial,sans-serif" font-size="13" fill="#e6edf3" text-anchor="start" font-weight="400">Breadth-first search</text>
+<rect x="785" y="404" width="315" height="16" rx="4" fill="#21262d"/>
+<rect x="785" y="404" width="167.34" height="16" rx="4" fill="#79c0ff"/>
+<text x="1154" y="416" font-family="DejaVu Sans,Arial,sans-serif" font-size="14" fill="#e6edf3" text-anchor="end" font-weight="700">85</text>
+<text x="570" y="452" font-family="DejaVu Sans,Arial,sans-serif" font-size="13" fill="#e6edf3" text-anchor="start" font-weight="400">Brute force</text>
+<rect x="785" y="440" width="315" height="16" rx="4" fill="#21262d"/>
+<rect x="785" y="440" width="161.44" height="16" rx="4" fill="#79c0ff"/>
+<text x="1154" y="452" font-family="DejaVu Sans,Arial,sans-serif" font-size="14" fill="#e6edf3" text-anchor="end" font-weight="700">82</text>
+<text x="570" y="488" font-family="DejaVu Sans,Arial,sans-serif" font-size="13" fill="#e6edf3" text-anchor="start" font-weight="400">Strings</text>
+<rect x="785" y="476" width="315" height="16" rx="4" fill="#21262d"/>
+<rect x="785" y="476" width="151.59" height="16" rx="4" fill="#79c0ff"/>
+<text x="1154" y="488" font-family="DejaVu Sans,Arial,sans-serif" font-size="14" fill="#e6edf3" text-anchor="end" font-weight="700">77</text>
+<text x="570" y="524" font-family="DejaVu Sans,Arial,sans-serif" font-size="13" fill="#e6edf3" text-anchor="start" font-weight="400">Sorting</text>
+<rect x="785" y="512" width="315" height="16" rx="4" fill="#21262d"/>
+<rect x="785" y="512" width="149.62" height="16" rx="4" fill="#79c0ff"/>
+<text x="1154" y="524" font-family="DejaVu Sans,Arial,sans-serif" font-size="14" fill="#e6edf3" text-anchor="end" font-weight="700">76</text>
+<line x1="36" y1="592" x2="1164" y2="592" stroke="#30363d"/>
+<text x="36" y="622" font-family="DejaVu Sans,Arial,sans-serif" font-size="12" fill="#9da7b3" text-anchor="start" font-weight="400">Source: 672 Baekjoon problem READMEs · counts, not skill ratings</text>
+<text x="1164" y="644" font-family="DejaVu Sans,Arial,sans-serif" font-size="11" fill="#9da7b3" text-anchor="end" font-weight="400">Multi-tag counting · 48 other-platform problems excluded from tag statistics</text>
+</svg>
